@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Getting Started with Weatherlens
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Weatherlens is a simple Javscript app which allows a user to get the current forecast of a particular location. Users can input a country, state, city or 
+street address. eg North carolina, america,628 clear lake or North lake.
 
-## Available Scripts
+The project comprises: 
+ 1) weatherlen-fe - front-end component of the app
+ 2) weatherlen-geocode-api- given a specifc location, returns  the latitute,longitude and location as JSON object 
+ 3) weatherlens-forecast-api -given a specific latitude, location, returns the forecast within that area as a JSON object
 
 In the project directory, you can run:
 
-### `npm start`
+### To run as docker containers: 
+ 1) clone the source code for each project and excecute the following commands to build docker images
+    -  docker build -t weatherlens-forecast-api .  (in the top level directory of weatherlens-forecast-api folder)
+    -  docker build -t weatherlens-geocode-api .  (in the top level directory of weatherlens-geocode-api folder)
+    -  docker build -t weatherlens-fe .  (in the top level directory of weatherlens-fe folder)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   run docker images using the following commands:
+    - docker run -d -p3005:3005 --name weatherlens-geocode-api weatherlens-geocode-api:latest
+    - docker run -d -p3006:3006 --name weatherlens-forecast-api weatherlens-forecast-api:latest
+    - docker run -d -p3000:3000 --name weatherlens-fe weatherlens-fe:latest
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+   Launch UI from browser using: http://localhost:3000/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### To run as docker images stored in dockerhub: 
+ 1) clone the source code for each project and excecute the following commands to build docker images
+    -  docker pull fansua/weatherlens-forecast-api   
+    -  docker pull fansua/weatherlens-geocode-api 
+    -  docker pull fansua/weatherlens-fe 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   run docker images using the following commands:
+    - docker run -d -p3005:3005 --name weatherlens-geocode-api weatherlens-geocode-api:latest
+    - docker run -d -p3006:3006 --name weatherlens-forecast-api weatherlens-forecast-api:latest
+    - docker run -d -p3000:3000 --name weatherlens-fe weatherlens-fe:latest
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Launch UI from browser using: http://localhost:3000/
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ### To run locally: 
+ 1) clone the source code for each project and excecute the following commands for each project at the top level:
+    -  npm i 
+    -  npm run start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   Launch UI from browser using: http://localhost:3000/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
